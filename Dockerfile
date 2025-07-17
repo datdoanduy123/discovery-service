@@ -7,6 +7,6 @@ RUN mvn clean package -DskipTests
 # ------------ RUNTIME STAGE ------------
 FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
-COPY --from=build /app/target/config-server-0.0.1-SNAPSHOT.jar app.jar
-EXPOSE 8888
+COPY --from=build /app/target/discovery-service-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8761
 ENTRYPOINT ["java", "-jar", "app.jar"]
