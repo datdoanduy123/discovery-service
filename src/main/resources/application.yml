@@ -1,0 +1,18 @@
+spring:
+  config:
+    import: optional:configserver:https://config-server-fxrd.onrender.com
+  application:
+    name: discovery-service
+
+eureka:
+  instance:
+    hostname: ${HOSTNAME:discovery-service}
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+server:
+  port: ${PORT:8761}
